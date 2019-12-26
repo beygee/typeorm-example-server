@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "ES2018",
+    "module": "commonjs",
+    "lib": ["es7", "ESNext.AsyncIterable"]
+  }
+}

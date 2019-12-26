@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+   rdb:
+    container_name: rdb
+    image: mysql:5.7
+    restart: always
+    environment: 
+      - MYSQL_USER=beygee
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=test
+      - TZ=Asia/Seoul
+    ports:
+      - 3307:3306
