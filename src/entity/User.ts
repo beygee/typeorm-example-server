@@ -3,32 +3,32 @@ import {
   PrimaryGeneratedColumn,
   Column,
   BaseEntity,
-  CreateDateColumn
+  CreateDateColumn,
+  OneToOne,
+  JoinColumn
 } from "typeorm";
+import { Profile } from "./Profile";
 
 @Entity()
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  password: string;
-
   @Column({ unique: true })
   email: string;
 
-  @Column({ type: "varchar", length: 120 })
-  name: string;
+  @Column()
+  password: string;
 
-  @Column({ type: "tinyint" })
-  age: number;
+  @CreateDateColumn()
+  createdAt: Date;
 
   @Column({ type: Date, nullable: true, default: null })
   deletedAt: Date | null;
 
-  @Column({ default: true })
-  enable: boolean;
-
-  @CreateDateColumn()
-  createdAt: Date;
+  @OneToOne(
+    type => Profile,
+    profile => profile.user
+  )
+  profile: Profile;
 }
