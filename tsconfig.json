@@ -4,6 +4,11 @@
     "experimentalDecorators": true,
     "target": "ES2018",
     "module": "commonjs",
-    "lib": ["es7", "ESNext.AsyncIterable"]
-  }
+    "lib": ["es7", "ESNext.AsyncIterable"],
+    "moduleResolution": "node",
+    "outDir": "./build",
+    "sourceMap": true
+  },
+  "exclude": ["node_modules", "src/test", "**/*.spec.ts", "**/*.test.ts"],
+  "include": ["src/**/*"]
 }
