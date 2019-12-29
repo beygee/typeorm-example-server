@@ -23,6 +23,9 @@ export class Post extends BaseEntity {
   @CreateDateColumn()
   createdAt: Date
 
+  @Column({ type: Date, default: null, nullable: true })
+  deletedAt: Date | null
+
   @ManyToOne(
     type => User,
     user => user.posts,
