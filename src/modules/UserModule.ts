@@ -45,4 +45,37 @@ export class UserModule {
       order: { id: 'DESC' }
     })
   }
+
+  public static async get(id: number): Promise<User> {
+    return await User.findOne({
+      where: { id, deletedAt: IsNull() },
+      relations: ['profile']
+    })
+  }
+
+  public static async profileUpdate(id: number, data: any): Promise<User> {
+    const user = await User.findOne({ where: { id }, relations: ['profile'] })
+
+    for (const key in data) {
+      user.profile[key] = data[key]
+    }
+
+    user.profile = await user.profile.save()
+
+    return user
+  }
+
+  public static async leave(id: number): Promise<User> {
+    const user = await User.findOne(id)
+
+    user.deletedAt = new Date()
+
+    return await user.save()
+  }
+
+  public static async delete(id: number): Promise<User> {
+    const user = await User.findOne(id, { relations: ['profile'] })
+    return await user.remove()
+    
+  }
 }
