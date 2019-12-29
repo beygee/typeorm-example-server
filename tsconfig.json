@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
     "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
-    "target": "ES2018",
+    "target": "es2018",
     "module": "commonjs",
-    "lib": ["es7", "ESNext.AsyncIterable"],
+    "lib": ["es2018", "esnext", "ESNext.AsyncIterable"],
     "moduleResolution": "node",
     "outDir": "./build",
     "sourceMap": true

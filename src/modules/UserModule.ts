@@ -6,6 +6,7 @@ import { IsNull } from 'typeorm'
 export class UserModule {
   public static async register(
     email: string,
+    nickname: string,
     password: string,
     name: string,
     age: number,
@@ -19,6 +20,7 @@ export class UserModule {
 
     const user = new User()
     user.email = email
+    user.nickname = nickname
     user.password = await bcrypt.hash(password, 10)
     user.profile = profile
 
@@ -76,6 +78,5 @@ export class UserModule {
   public static async delete(id: number): Promise<User> {
     const user = await User.findOne(id, { relations: ['profile'] })
     return await user.remove()
-    
   }
 }

@@ -5,5 +5,6 @@ module.exports = {
   },
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-  setupFilesAfterEnv: ['<rootDir>/src/test/setupTest.ts']
+  setupFilesAfterEnv: ['<rootDir>/src/test/setupTest.ts'],
+  isSerial: true
 }

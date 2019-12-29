@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "test": "jest --watch --runInBand --verbose"
+    "test": "jest --watch --runInBand --verbose --coverage"
   },
   "keywords": [],
   "author": "",

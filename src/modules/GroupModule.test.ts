@@ -17,12 +17,14 @@ describe('Group Modules tests', () => {
   test('유저 추가', async () => {
     for (let i = 0; i < 2; i++) {
       const email = faker.random.uuid() + faker.internet.email()
+      const nickname = faker.random.uuid() + faker.internet.userName()
       const name = faker.name.lastName() + faker.name.firstName()
       const age = faker.random.number({ min: 12, max: 100 })
       const imageUrl = faker.image.imageUrl()
 
       const user = await UserModule.register(
         email,
+        nickname,
         'password',
         name,
         age,

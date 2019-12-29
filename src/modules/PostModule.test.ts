@@ -10,12 +10,20 @@ describe('Post modules test', () => {
 
   test('사용자 추가', async () => {
     const email = faker.random.uuid() + faker.internet.email()
+    const nickname = faker.random.uuid() + faker.internet.userName()
     const name = faker.name.lastName() + faker.name.firstName()
     const age = faker.random.number({ min: 12, max: 100 })
     const imageUrl = faker.image.imageUrl()
 
     const password = faker.internet.password()
-    user = await UserModule.register(email, password, name, age, imageUrl)
+    user = await UserModule.register(
+      email,
+      nickname,
+      password,
+      name,
+      age,
+      imageUrl
+    )
     expect(user).toHaveProperty('id')
     expect(user.id).not.toEqual(undefined)
   })
