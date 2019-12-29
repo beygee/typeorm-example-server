@@ -5,11 +5,12 @@ import {
   BaseEntity,
   CreateDateColumn,
   OneToOne,
-  JoinColumn,
-  OneToMany
+  OneToMany,
+  ManyToMany
 } from 'typeorm'
 import { Profile } from './Profile'
 import { Post } from './Post'
+import { Group } from './Group'
 
 @Entity()
 export class User extends BaseEntity {
@@ -39,4 +40,10 @@ export class User extends BaseEntity {
     post => post.user
   )
   posts: Post[]
+
+  @ManyToMany(
+    type => Group,
+    group => group.users
+  )
+  groups: Group[]
 }
