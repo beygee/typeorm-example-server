@@ -1,6 +1,5 @@
 import { Post } from '../entity/Post'
 import { User } from '../entity/User'
-import { isNull } from 'util'
 import { Like, IsNull } from 'typeorm'
 
 export class PostModule {
@@ -16,7 +15,7 @@ export class PostModule {
     data: any
   ): Promise<Post | null> {
     const post = await Post.findOne({
-      where: { id: postId, deleteAt: isNull },
+      where: { id: postId, deleteAt: IsNull() },
       relations: ['user']
     })
 
@@ -40,7 +39,7 @@ export class PostModule {
     }
 
     const posts = await Post.find({
-      where: { deletedAt: isNull, ...where },
+      where: { deletedAt: IsNull(), ...where },
       skip,
       take
     })
@@ -50,7 +49,7 @@ export class PostModule {
 
   public static async userPosts(userId: number): Promise<Post[]> {
     return await Post.find({
-      where: { userId, deletedAt: isNull },
+      where: { deletedAt: IsNull(), user: userId },
       relations: ['user'],
       order: { id: 'DESC' }
     })
