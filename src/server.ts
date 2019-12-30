@@ -1,11 +1,8 @@
 import 'reflect-metadata'
 import { ApolloServer } from 'apollo-server'
 import { buildSchema } from 'type-graphql'
-import { RegisterResolver } from './resolvers/user/RegisterResolver'
 import db from './utils/db'
-import { HelloResolver } from './resolvers/hello/HelloResolver'
-
-const resolvers = [RegisterResolver, HelloResolver]
+import resolvers from './resolvers'
 
 async function main() {
   try {
