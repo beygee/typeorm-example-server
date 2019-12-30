@@ -35,6 +35,10 @@ export class User extends BaseEntity {
   @CreateDateColumn()
   createdAt: Date
 
+  @Field()
+  @Column({ default: 0 })
+  type: number
+
   @Column({ type: Date, nullable: true, default: null })
   deletedAt: Date | null
 

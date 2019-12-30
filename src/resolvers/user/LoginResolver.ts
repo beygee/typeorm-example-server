@@ -23,8 +23,6 @@ export class LoginResolver {
 
     if (!user) throw new Error('아이디와 암호를 확인해주세요')
 
-    console.log(user)
-
     const valid = await bcrypt.compare(loginInput.password, user.password)
 
     if (!valid) throw new Error('아이디와 암호를 확인해주세요')
